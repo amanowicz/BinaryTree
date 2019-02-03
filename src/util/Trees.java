@@ -4,7 +4,7 @@ import model.Node;
 
 public class Trees {
 
-    public static Node createTree(){
+    public static Node createTree() {
         Node root = new Node("2");
         Node lChild1 = new Node("7");
         Node rChild1 = new Node("5");
@@ -13,7 +13,7 @@ public class Trees {
         Node rRChild2 = new Node("9");
         Node lLRChild3 = new Node("5");
         Node rLRChild3 = new Node("11");
-        Node lRRChild3 = new Node("4");
+        Node lRRChild3 = new Node("2");
 
         root.setlChild(lChild1);
         root.setrChild(rChild1);
@@ -29,31 +29,31 @@ public class Trees {
         return root;
     }
 
-    public static int sumNodesValues(Node node){
-        if (node == null){
+    public static int sumNodesValues(Node node) {
+        if (node == null) {
             return 0;
         }
 
         return Integer.valueOf(node.getValue()) + sumNodesValues(node.getlChild()) + sumNodesValues(node.getrChild());
     }
 
-    public static int sumNodes(Node node){
-        if (node == null){
+    public static int sumNodes(Node node) {
+        if (node == null) {
             return 0;
         }
 
         return 1 + sumNodes(node.getlChild()) + sumNodes(node.getrChild());
     }
 
-    public static int depth(Node node){
-        if (node == null){
+    public static int depth(Node node) {
+        if (node == null) {
             return 0;
         }
         return 1 + Math.max(depth(node.getlChild()), depth(node.getrChild()));
     }
 
-    public static int maxValue(Node node){
-        if (node == null){
+    public static int maxValue(Node node) {
+        if (node == null) {
             return 0;
         }
 
@@ -61,7 +61,22 @@ public class Trees {
         return Math.max(maxLeftSide, maxValue(node.getrChild()));
     }
 
-    private static int max(Node node, int value){
+    private static int max(Node node, int value) {
         return Math.max(Integer.valueOf(node.getValue()), value);
+    }
+
+    public static int getRepeatNumber(Node node, int a) {
+        if (node == null) {
+            return 0;
+        }
+        return isEqual(node, a) + getRepeatNumber(node.getlChild(), a) + getRepeatNumber(node.getrChild(), a);
+
+    }
+
+    private static int isEqual(Node node, int a) {
+        if (Integer.valueOf(node.getValue()) == a) {
+            return 1;
+        }
+        return 0;
     }
 }

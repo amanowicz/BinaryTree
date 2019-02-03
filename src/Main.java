@@ -11,6 +11,7 @@ public class Main {
         System.out.println(Trees.sumNodesValues(root));
         System.out.println(Trees.depth(root));
         System.out.println(Trees.maxValue(root));
+        System.out.println(Trees.getRepeatNumber(root, 2));
 
 
     }
